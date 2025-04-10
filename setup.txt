@@ -1,0 +1,2 @@
+addpath rtb common smtb
+mdl_puma560
