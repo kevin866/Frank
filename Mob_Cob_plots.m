@@ -24,6 +24,10 @@ qcobot=[dy,dx,thz,th1,th2,th3,th4,th5,th6];
 linkG_By=Link([-pi/2 0 0 -pi/2 1 0],'modified',"Jm",jm);
 linkBy_Bx=Link([-pi/2 0 0 -pi/2 1 0],'modified');
 linkBx_Mb=Link([0 0 0 -pi/2 0 -pi/2],'modified');
+
+% not sure where the -pi/2 offset is coming from
+linkBx_Mb=Link([0 0 0 -pi/2 0 0],'modified');
+
 linkMb_1=Link([0 L1+Dz Dx 0 0 0],'modified');
 link1_2=Link([0 -L2 0 -pi/2 0 -pi/2],'modified');
 link2_3=Link([0 0 L3 0 0 0],'modified');
@@ -69,7 +73,7 @@ Ree_qcobot=Tee_qcobot(1:3,1:3);
 
 % plot 
 Mob_Cob.plot(q0,'workspace',[-1.5, 1.5, -1.5, 1.5,0,2],'scale',0.4)
-pause
+pause 
 Mob_Cob.plot(qcobot,'workspace',[-1.5, 1.5, -1.5, 1.5,0,2],'scale',0.4)
 pause
 % Path Planning q0 to qcobot

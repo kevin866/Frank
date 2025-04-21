@@ -9,7 +9,7 @@ L5=.0237; L6=.106; L7=.1132; Dx=.3048; Dz=.08735;
 
 
 % Mass of links (kg)
-m1=0; m2=0; % x and y prismatic links
+m1=10; m2=10; % x and y prismatic links
 m3= 148+14.5;    % rot z link -> mass of the robot base and TM12 controller(from spec sheet) 
 mArm=32.8;  % TM12 total mass of arm 
 % Mass of individual links unknown, loosely scale total arm mass as a
@@ -30,6 +30,7 @@ linkG_By=Link([-pi/2 0 0 -pi/2 1 0],'modified',"Jm",jm);
 linkBy_Bx=Link([-pi/2 0 0 -pi/2 1 0],'modified');
 linkBx_Mb=Link([0 0 0 -pi/2 0 -pi/2],'modified');
 linkMb_1=Link([0 L1+Dz Dx 0 0 0],'modified');
+%check if L2 should be negative
 link1_2=Link([0 -L2 0 -pi/2 0 -pi/2],'modified');
 link2_3=Link([0 0 L3 0 0 0],'modified');
 link3_4=Link([0 L5 L4 0 0 -pi/2],'modified');
@@ -53,9 +54,17 @@ linkMb_1.qlim=[-4.7124,4.7124]; link1_2.qlim=[-3.1416,3.1416];
 link2_3.qlim=[-2.8972,2.8972];link3_4.qlim=[-3.1416,3.1416]; 
 link4_5.qlim=[-3.1416,3.1416]; link5_6.qlim=[-4.7124,4.7124];
 
-links=[linkG_By linkBy_Bx linkBx_Mb linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
+% links=[linkG_By linkBy_Bx linkBx_Mb linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
+% links=[linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
+links=[linkG_By linkBy_Bx linkBx_Mb];
 
 Mob_Cob=SerialLink(links,'name','Mobile_Cobot');
-
-
-Mob_Cob.fkine([0 0 0 0 0 0 0 0 0])
+Mob_Cob.n
+q0=[0,0,0];
+% 
+% q0=[0,0,0,0,0,0,0,0,0];
+% 
+% Mob_Cob.fkine([0 0 0 0 0 0 0 0 0])
+% J = Mob_Cob.jacob0(q0);
+% rank(J)
+% fprintf('Jacobian condition number: %.2e\n', cond(J));
