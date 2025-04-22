@@ -30,7 +30,6 @@ linkG_By=Link([-pi/2 0 0 -pi/2 1 0],'modified',"Jm",jm);
 linkBy_Bx=Link([-pi/2 0 0 -pi/2 1 0],'modified');
 linkBx_Mb=Link([0 0 0 -pi/2 0 -pi/2],'modified');
 linkMb_1=Link([0 L1+Dz Dx 0 0 0],'modified');
-%check if L2 should be negative
 link1_2=Link([0 -L2 0 -pi/2 0 -pi/2],'modified');
 link2_3=Link([0 0 L3 0 0 0],'modified');
 link3_4=Link([0 L5 L4 0 0 -pi/2],'modified');
