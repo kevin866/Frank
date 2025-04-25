@@ -47,23 +47,13 @@ linkMb_1.Jm=jm; link1_2.Jm=jm; link2_3.Jm=jm;
 link3_4.Jm=jm; link4_5.Jm=jm; link5_6.Jm=jm;
 
 % link joint limits rad for R links m for P links according to spec sheet
-%linkG_By.qlim=[0,1]; linkBy_Bx.qlim=[0,1]; 
+% linkG_By.qlim=[0,1]; linkBy_Bx.qlim=[0,1]; 
 linkBx_Mb.qlim=[-3.1416,3.1416]; 
 linkMb_1.qlim=[-4.7124,4.7124]; link1_2.qlim=[-3.1416,3.1416]; 
 link2_3.qlim=[-2.8972,2.8972];link3_4.qlim=[-3.1416,3.1416]; 
 link4_5.qlim=[-3.1416,3.1416]; link5_6.qlim=[-4.7124,4.7124];
 
-% links=[linkG_By linkBy_Bx linkBx_Mb linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
-% links=[linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
-links=[linkG_By linkBy_Bx linkBx_Mb];
+links=[linkG_By linkBy_Bx linkBx_Mb linkMb_1 link1_2 link2_3 link3_4 link4_5 link5_6];
 
 Mob_Cob=SerialLink(links,'name','Mobile_Cobot');
 Mob_Cob.n
-q0=[0,0,0];
-% 
-% q0=[0,0,0,0,0,0,0,0,0];
-% 
-% Mob_Cob.fkine([0 0 0 0 0 0 0 0 0])
-% J = Mob_Cob.jacob0(q0);
-% rank(J)
-% fprintf('Jacobian condition number: %.2e\n', cond(J));
