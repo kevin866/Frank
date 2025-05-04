@@ -7,7 +7,7 @@
 clear L
 deg = pi/180;
 J_motor = [3e-5, 2e-5, 1.5e-5, 1e-5, 8e-6, 5e-6];  % kg*m^2
-gr = 100;
+gr = 10;
 % I still need to check which motor is for which joint for the gear ratio
 % the B, Tc(from the puma) and the Jm is estimated(from chatgpt)
 % Link 1
@@ -34,7 +34,7 @@ L(2) = Revolute('d', 0, ...
     'Jm', J_motor(2), ...
     'B', .817e-3, ...
     'Tc', [0.126 -0.071], ...
-    'G',gr);
+    'G',501.9);
 
 % Link 3
 L(3) = Revolute('d', 0, ...
@@ -47,7 +47,7 @@ L(3) = Revolute('d', 0, ...
     'Jm', J_motor(3), ...
     'B', 1.38e-3, ...
     'Tc', [0.132, -0.105], ...
-    'G',gr);
+    'G',501.9);
 
 % Link 4
 L(4) = Revolute('d', 0.258, ...
@@ -60,7 +60,7 @@ L(4) = Revolute('d', 0.258, ...
     'Jm', J_motor(4), ...
     'B', 71.2e-6, ...
     'Tc', [11.2e-3, -16.9e-3], ...
-    'G',gr);
+    'G',303.8);
 
 % Link 5
 L(5) = Revolute('d', 0, ...
@@ -95,13 +95,15 @@ openmanipulator_pro = SerialLink(L, 'name', 'OpenManipulator-Pro');
 qz = zeros(1,6);                 % Zero angles
 qr = [0, pi/2, -pi/2, 0, 0, 0];  % Ready pose
 qs = [0, 0, -pi/2, 0, 0, 0];     % Stretched pose
-qn = [0, pi/4, pi, 0, pi/4, 0];  % Nominal pose
+qn = [0, pi/2, pi, 0, pi/4, 0];  % Nominal pose
+qn = [0, -pi/4, 0, 0, pi/4, 0];  % Nominal pose
 
 % % Assign configurations to the robot model
 % openmanipulator_pro.configs = struct('qz', qz, 'qr', qr, 'qs', qs, 'qn', qn);
 
 % Optionally, assign a 3D model for visualization (if available)
 % openmanipulator_pro.model3d = 'ROBOTIS/openmanipulator_pro';
+openmanipulator_pro.plot(qn)
 
 % Display the robot model
 disp(openmanipulator_pro);
